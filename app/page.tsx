@@ -1,11 +1,29 @@
 "use client";
 
-import { Facebook, Twitter, Linkedin, Instagram, UserPlus, Search, PlayCircle } from "lucide-react";
+import {
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
+  UserPlus,
+  Search,
+  PlayCircle,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
-// import { Typewriter } from "react-simple-typewriter"; // Remove if unused
+
+// ✅ Move menuItems outside so useEffect doesn't complain
+const menuItems = [
+  { id: "hero", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "features", label: "Features" },
+  { id: "mission", label: "Mission" },
+  { id: "howitworks", label: "How It Works" },
+  { id: "testimonials", label: "Testimonials" },
+  { id: "contact", label: "Contact" },
+];
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,32 +31,27 @@ export default function Home() {
   const [carouselIndex, setCarouselIndex] = useState(0);
 
   const testimonials = [
-    { name: "Amit", text: "Best platform for learning Python! The teachers are so helpful." },
-    { name: "Priya", text: "I cracked my coding interview thanks to Evolve CodeLink's practice sessions." },
-    { name: "Rahul", text: "Loved the flexible timing and personalized learning experience." },
+    {
+      name: "Amit",
+      text: "Best platform for learning Python! The teachers are so helpful.",
+    },
+    {
+      name: "Priya",
+      text: "I cracked my coding interview thanks to Evolve CodeLink's practice sessions.",
+    },
+    {
+      name: "Rahul",
+      text: "Loved the flexible timing and personalized learning experience.",
+    },
   ];
 
-  const menuItems = [
-    { id: "hero", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "features", label: "Features" },
-    { id: "mission", label: "Mission" },
-    { id: "howitworks", label: "How It Works" },
-    { id: "testimonials", label: "Testimonials" },
-    { id: "contact", label: "Contact" },
-  ];
-
-  const carouselImages = [
-    "/hero-image1.jpg",
-    "/hero-image2.jpg",
-    "/hero-image3.jpg",
-  ];
+  const carouselImages = ["/hero-image1.jpg", "/hero-image2.jpg", "/hero-image3.jpg"];
 
   // Track scrolling for active section highlight
   useEffect(() => {
     const handleScroll = () => {
       const scrollPos = window.scrollY + 100;
-      for (let item of menuItems) {
+      for (const item of menuItems) {   // ✅ use const instead of let
         const section = document.getElementById(item.id);
         if (
           section &&
@@ -53,7 +66,7 @@ export default function Home() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [menuItems]);
+  }, []); // ✅ no dependency needed now since menuItems is outside
 
   // Carousel autoplay
   useEffect(() => {
@@ -62,7 +75,7 @@ export default function Home() {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [carouselImages.length]);
   return (
     <main className="bg-white min-h-screen text-purple-900 scroll-smooth">
       {/* Navbar */}
@@ -139,50 +152,52 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-     <section
-  id="hero"
-  className="flex flex-col md:flex-row items-center text-center md:text-left py-12 px-6 sm:px-8 lg:px-20 bg-purple-50"
->
-  <motion.div
-    className="flex-1"
-    initial={{ opacity: 0, x: -50 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.8 }}
-  >
-    <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-4 text-purple-800">
-      Connecting Programming Teachers with Learners
-    </h1>
-    <p className="text-base sm:text-lg md:text-xl max-w-xl mb-6 text-purple-700">
-      Evolve CodeLink is your one-stop platform to find verified
-      programming teachers, learn at your own pace, and gain real-world
-      coding skills.
-    </p>
-    <a
-      href="#get-started"
-      className="bg-purple-700 text-white px-5 sm:px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-purple-800 transition"
-    >
-      Get Started
-    </a>
-  </motion.div>
+      {/* Hero Section */}
+      <section
+        id="hero"
+        className="flex flex-col md:flex-row items-center text-center md:text-left py-12 px-6 sm:px-8 lg:px-20 bg-purple-50"
+      >
+        <motion.div
+          className="flex-1"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-4 text-purple-800">
+            Connecting Programming Teachers with Learners
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl max-w-xl mb-6 text-purple-700">
+            Evolve CodeLink is your one-stop platform to find verified programming
+            teachers, learn at your own pace, and gain real-world coding skills.
+          </p>
+          <a
+            href="#get-started"
+            className="bg-purple-700 text-white px-5 sm:px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-purple-800 transition"
+          >
+            Get Started
+          </a>
+        </motion.div>
 
-  <motion.div
-    className="flex-1 mt-8 md:mt-0 md:ml-8 relative"
-    initial={{ opacity: 0, x: 50 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.8 }}
-  >
-    {carouselImages?.length > 0 && (
-      <Image
-        key={carouselImages[carouselIndex]}
-        src={carouselImages[carouselIndex]}
-        alt="Learning Programming"
-        width={700}
-        height={450}
-        className="rounded-lg shadow-lg w-[700px] h-[450px] object-cover transition-all duration-700 ease-in-out"
-      />
-    )}
-  </motion.div>
-</section>
+        <motion.div
+          className="flex-1 mt-8 md:mt-0 md:ml-8 relative"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {carouselImages.length > 0 && (
+            <Image
+              key={carouselImages[carouselIndex]}
+              src={carouselImages[carouselIndex]}
+              alt="Learning Programming"
+              width={700}
+              height={450}
+              className="rounded-lg shadow-lg w-[700px] h-[450px] object-cover transition-all duration-700 ease-in-out"
+              priority
+            />
+          )}
+        </motion.div>
+      </section>
+
 
 
       {/* About Section */}
@@ -355,7 +370,7 @@ export default function Home() {
               className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition relative"
             >
               <div className="absolute -top-6 left-6 text-purple-400 text-6xl opacity-20">“</div>
-              <p className="text-purple-700 italic text-lg">"{t.text}"</p>
+              <p className="text-purple-700 italic text-lg">&quot;{t.text}&quot;</p>
               <p className="mt-6 font-semibold text-purple-900 text-right">— {t.name}</p>
             </motion.div>
           ))}
