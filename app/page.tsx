@@ -84,10 +84,11 @@ export default function Home() {
           <Image
             src="/logo.png"
             alt="Evolve CodeLink Logo"
-            width={140}
-            height={140}
-            className="rounded-lg w-20 md:w-[140px] h-auto"
+            width={200}   // intrinsic width
+            height={200}  // intrinsic height
+            className="rounded-lg w-40 md:w-[200px] h-auto"
           />
+
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex space-x-6 font-medium items-center">
