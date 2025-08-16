@@ -377,7 +377,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact */} <section id="contact" className="bg-purple-50 py-16 px-4 sm:px-6 lg:px-20 text-center" > <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-purple-800"> Contact Us </h2> <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"> {/* Contact Info */} <div className="text-left space-y-4 text-sm sm:text-base"> <p> <strong>Address:</strong> 123 Coding Street, Tech City, India </p> <p> <strong>Phone:</strong> +91 98765 43210 </p> <p> <strong>Email:</strong> contact@evolvecodelink.com </p> </div> {/* Google Map */} <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.086548387932!2d77.21672131508218!3d28.61393908242392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd1b6d5b8e5f%3A0x2cb0e8b2a9b32a3!2sNew%20Delhi%2C%20Delhi%2C%20India!5e0!3m2!1sen!2sin!4v1679999999999!5m2!1sen!2sin" width="100%" height="300" style={{ border: 0 }} allowFullScreen={true} loading="lazy" className="rounded-lg shadow-lg" ></iframe> </div> </section>
+      {/* Contact */} <section id="contact" className="bg-purple-50 py-16 px-4 sm:px-6 lg:px-20 text-center" > <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-purple-800"> Contact Us </h2> <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"> {/* Contact Info */} <div className="text-left space-y-4 text-sm sm:text-base"> <p> <strong>Address:</strong> F-2, Chandaka Industrial Estate
+        In front of Infocity, Infocity
+        Chandrasekharpur, Bhubaneshwar
+        Odisha - 751024 </p> <p> <strong>Phone:</strong> +91 98765 43210 </p> <p> <strong>Email:</strong> contact@evolvecodelink.com </p> </div> {/* Google Map */} <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.086548387932!2d77.21672131508218!3d28.61393908242392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd1b6d5b8e5f%3A0x2cb0e8b2a9b32a3!2sNew%20Delhi%2C%20Delhi%2C%20India!5e0!3m2!1sen!2sin!4v1679999999999!5m2!1sen!2sin" width="100%" height="300" style={{ border: 0 }} allowFullScreen={true} loading="lazy" className="rounded-lg shadow-lg" ></iframe> </div> </section>
       {/* Footer */}
       <footer className="bg-purple-700 text-white py-8 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
